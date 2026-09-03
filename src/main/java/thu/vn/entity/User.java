@@ -51,4 +51,15 @@ public class User implements Serializable {
 
     public int getRoleid() { return roleid; }
     public void setRoleid(int roleid) { this.roleid = roleid; }
+    
+    private String images;
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
+    
 }

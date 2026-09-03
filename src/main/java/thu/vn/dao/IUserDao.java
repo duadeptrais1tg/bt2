@@ -7,4 +7,7 @@ public interface IUserDao {
     void insert(User user);
     boolean checkExistUsername(String username);
     boolean checkExistEmail(String email);
+    
+    void update(User user);
+    User findById(int id);
 }

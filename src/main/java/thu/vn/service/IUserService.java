@@ -7,4 +7,7 @@ public interface IUserService {
     boolean register(String username, String password, String fullname, String email, String phone);
     boolean checkExistUsername(String username);
     boolean checkExistEmail(String email);
+    
+    void update(User user);
+    User findById(int id);
 }

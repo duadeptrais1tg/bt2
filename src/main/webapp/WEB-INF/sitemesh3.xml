@@ -1,0 +1,9 @@
+<sitemesh>
+    <!-- Chỉ để tên file JSP, không để lại prefix đường dẫn WEB-INF/decorators -->
+    <mapping path="/user/*" name="user" decorator="user.jsp"/>
+    <mapping path="/admin/*" name="admin" decorator="admin.jsp"/>
+    <mapping path="/*" name="web" decorator="web.jsp"/>
+
+    <mapping path="/api/*" exclude="true" />
+    <mapping path="/image/*" exclude="true" />
+</sitemesh>

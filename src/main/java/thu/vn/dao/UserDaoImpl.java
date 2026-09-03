@@ -58,4 +58,32 @@ public class UserDaoImpl implements IUserDao {
             enma.close();
         }
     }
+    @Override
+    public void update(User user) {
+        EntityManager enma = JpaConfig.getEntityManager();
+        EntityTransaction trans = enma.getTransaction();
+        try {
+            trans.begin();
+            enma.merge(user);
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (trans.isActive()) trans.rollback();
+        } finally {
+            enma.close();
+        }
+    }
+
+    @Override
+    public User findById(int id) {
+        EntityManager enma = JpaConfig.getEntityManager();
+        try {
+            return enma.find(User.class, id);
+        } finally {
+            enma.close();
+        }
+    }
+    
+    
+    
 }

@@ -13,20 +13,30 @@
     <c:forEach items="${listcate}" var="cate" varStatus="STT">
         <tr>
             <td>${STT.index + 1}</td>
+            
+            <%-- Xử lý đường dẫn ảnh đơn giản, chính xác --%>
             <c:choose>
-                <c:when test="${cate.images != null && cate.images.startsWith('http')}">
-                    <c:url value="${cate.images}" var="imgUrl"/>
+                <%-- 1. Nếu ảnh là URL online bắt đầu bằng http/https --%>
+                <c:when test="${not empty cate.images && (cate.images.startsWith('http://') || cate.images.startsWith('https://'))}">
+                    <c:set var="imgUrl" value="${cate.images}" />
                 </c:when>
+                
+                <%-- 2. Nếu là file upload lưu local trong máy --%>
                 <c:otherwise>
-                    <c:url value="/image?fname=${cate.images}" var="imgUrl"/>
+                    <c:url value="/image" var="imgUrl">
+                        <c:param name="fname" value="${cate.images}"/>
+                    </c:url>
                 </c:otherwise>
             </c:choose>
-            <td><img height="100" width="150" src="${imgUrl}" /></td>
+
+            <td>
+                <img height="100" width="150" src="${imgUrl}" alt="${cate.categoryname}" />
+            </td>
             <td>${cate.categoryname}</td>
             <td>${cate.status == 1 ? 'Hoạt động' : 'Khóa'}</td>
             <td>
                 <a href="<c:url value='/admin/category/edit?id=${cate.categoryid}'/>">Sửa</a> | 
-                <a href="<c:url value='/admin/category/delete?id=${cate.categoryid}'/>">Xóa</a>
+                <a href="<c:url value='/admin/category/delete?id=${cate.categoryid}'/>" onclick="return confirm('Bạn có chắc chắn muốn xóa category này?');">Xóa</a>
             </td>
         </tr>
     </c:forEach>

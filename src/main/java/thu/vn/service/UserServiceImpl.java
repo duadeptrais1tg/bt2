@@ -42,4 +42,14 @@ public class UserServiceImpl implements IUserService {
     public boolean checkExistEmail(String email) {
         return userDao.checkExistEmail(email);
     }
+    
+    @Override
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    @Override
+    public User findById(int id) {
+        return userDao.findById(id);
+    }
 }
