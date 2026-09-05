@@ -10,4 +10,5 @@ public interface IUserDao {
     
     void update(User user);
     User findById(int id);
+    
 }

@@ -10,4 +10,6 @@ public interface IUserService {
     
     void update(User user);
     User findById(int id);
+    User findByUsername(String username);
+    void insert(User user);
 }

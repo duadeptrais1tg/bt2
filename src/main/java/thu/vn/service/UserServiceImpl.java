@@ -42,7 +42,7 @@ public class UserServiceImpl implements IUserService {
     public boolean checkExistEmail(String email) {
         return userDao.checkExistEmail(email);
     }
-    
+
     @Override
     public void update(User user) {
         userDao.update(user);
@@ -51,5 +51,16 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User findById(int id) {
         return userDao.findById(id);
+    }
+
+    // === BỔ SUNG THÊM 2 HÀM NÀY ĐỂ HẾT LỖI RED LINE ===
+    @Override
+    public User findByUsername(String username) {
+        return userDao.findByUsername(username);
+    }
+
+    @Override
+    public void insert(User user) {
+        userDao.insert(user);
     }
 }

@@ -6,6 +6,7 @@
         <class>thu.vn.entity.User</class>
         <class>thu.vn.entity.Category</class>
         <class>thu.vn.entity.Video</class>
+        <class>thu.vn.entity.Product</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
